@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Details</title>
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <!-- <link rel="stylesheet" href="./styles.css"> -->
+
+    <style>
+        .bus-block {
+            /* display: flex; */
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            padding: 20px;
+            margin-bottom: 20px;
+            overflow: hidden;
+            width: 95%;
+            float: left;
+            margin-right: 5%;  
+        }
+
+        .bus-images {
+            /* display: flex; */
+            float: left;
+            margin-right: 20px;
+        }
+
+        .bus-images img {
+            width: 400px;
+            height: 140px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .bus-details {
+            float: left;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif ;
+        }
+
+        .bus-details h2 {
+            margin-top: 0;
+        }
+
+        @media screen and (max-width: 768px) {
+        .bus-block {
+            width: 100%;
+            margin-right: 0; 
+            }
+        }
+
+        .bus-details-container {
+    display: flex; 
+    flex-wrap: wrap; 
+}
+
+        .bus-details-container:nth-child(even) {
+    flex-direction: row-reverse; 
+}
+
+.head1 {
+    display: flex;
+    padding: 0px 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.btn {
+    width: 100px; 
+    height: auto; 
+    padding-right: 20px;
+}
+
+    </style>
+</head>
+<body>
+        <div class="head1">
+            <a href="./index.html">
+                <img src="./images/logoside.png" alt="Bus" class="btn">
+            </a>
+                <a href="./search.html"><img src="./images/search1.png" alt="Bus" class="btn"></a>
+        </div>
+        <center><h1>All Bus Details</h1></center>
+        <br>
+    <div id="bus-details-container">
+    </div>
+
+    <script>
+        function fetchBusDetails() {
+            fetch('dispdata.php')
+            .then(response => response.json())
+            .then(data => {
+                displayBusDetails(data);
+            })
+            .catch(error => console.error('Error fetching bus details:', error));
+        }
+
+        function displayBusDetails(busDetails) {
+            const container = document.getElementById('bus-details-container');
+
+            busDetails.forEach(bus => {
+                const busBlock = document.createElement('div');
+                busBlock.classList.add('bus-block');
+
+                const imagesDiv = document.createElement('div');
+                imagesDiv.classList.add('bus-images');
+                for (let key in bus.images) {
+                    if (bus.images.hasOwnProperty(key)) {
+                        const image = document.createElement('img');
+                        image.src = bus.images[key];
+                        imagesDiv.appendChild(image);
+                    }
+                }
+
+                const detailsDiv = document.createElement('div');
+                detailsDiv.classList.add('bus-details');
+                const heading = document.createElement('h2');
+                heading.textContent = bus.model;
+                detailsDiv.appendChild(heading);
+                detailsDiv.innerHTML += `<p>Capacity: ${bus.capacity}</p>`;
+                detailsDiv.innerHTML += `<p>License Plate: ${bus.license_plate}</p>`;
+                detailsDiv.innerHTML += `<p>Driver: ${bus.driver.name}</p>`;
+                detailsDiv.innerHTML += `<p>License number: ${bus.driver.license_number}</p>`;
+                detailsDiv.innerHTML += `<p>Contact no: ${bus.driver.contact}</p>`;
+                detailsDiv.innerHTML += `<p>Start Location: ${bus.route.start_location}</p>`;
+                detailsDiv.innerHTML += `<p>End Location: ${bus.route.end_location}</p>`;
+                detailsDiv.innerHTML += `<p>Distance: ${bus.route.distance}</p>`;
+                detailsDiv.innerHTML += `<p>Duration: ${bus.route.duration}</p>`;
+                detailsDiv.innerHTML += `<p>Departure Time: ${bus.schedule.departure_time}</p>`;
+                detailsDiv.innerHTML += `<p>Arrival Time: ${bus.schedule.arrival_time}</p>`;
+                detailsDiv.innerHTML += `<p>Date: ${bus.schedule.date}</p>`;
+
+                busBlock.appendChild(imagesDiv);
+                busBlock.appendChild(detailsDiv);
+
+                container.appendChild(busBlock);
+            });
+        }
+
+        window.onload = fetchBusDetails;
+    </script>
+</body>
+</html>

@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bus Management Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+        }
+        h2 {
+            margin-bottom: 20px;
+        }
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+        input[type="text"],
+        input[type="number"],
+        select {
+            width: 100%;
+            padding: 8px;
+            margin-bottom: 10px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        input[type="file"] {
+            margin-top: 10px;
+        }
+        input[type="submit"] {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <h2>Bus Management Form</h2>
+    <form enctype="multipart/form-data" method="post" action="./mform.php">
+        <h3>Bus Details</h3>
+        <!-- <label for="busID">Bus ID:</label>
+        <input type="text" id="busID" name="busID" required> -->
+
+        <label for="model">Model:</label>
+        <input type="text" id="model" name="model" required>
+
+        <label for="capacity">Capacity:</label>
+        <input type="number" id="capacity" name="capacity" required>
+
+        <label for="licensePlate">License Plate:</label>
+        <input type="text" id="licensePlate" name="licensePlate" required>
+
+        <label for="busImage1">Bus Image 1:</label>
+        <input type="url" id="busImage1" name="busImage1" accept="image/*" required>
+        <br><br>
+        <label for="busImage2">Bus Image 2:</label>
+        <input type="url" id="busImage2" name="busImage2" accept="image/*" required>
+        <br><br>
+        <label for="busImage3">Bus Image 3:</label>
+        <input type="url" id="busImage3" name="busImage3" accept="image/*" required>
+
+        <h3>Driver Details</h3>
+        <label for="driverName">Driver Name:</label>
+        <input type="text" id="driverName" name="driverName" required>
+
+        <label for="licenseNumber">License Number:</label>
+        <input type="text" id="licenseNumber" name="licenseNumber" required>
+
+        <label for="contact">Contact:</label>
+        <input type="number" id="contact" name="contact" required>
+
+        <h3>Route Details</h3>
+        <label for="startlocation">Start location:</label>
+        <input type="text" id="startlocation" name="startlocation" required>
+
+        <label for="endlocation">End location:</label>
+        <input type="text" id="endlocation" name="endlocation" required>
+
+        <label for="distance">Distance:</label>
+        <input type="number" id="distance" name="distance" required>
+
+        <label for="duration">Duration:</label>
+        <input type="number" id="duration" name="duration" required>
+
+        <h3>Schedule Details</h3>
+        <label for="departureTime">Departure Time:</label>
+        <input type="time" id="departureTime" name="departureTime" required>
+
+        <label for="arrivalTime">Arrival Time:</label>
+        <input type="time" id="arrivalTime" name="arrivalTime" required>
+
+        <label for="date">Date:</label>
+        <input type="date" id="date" name="date" required>
+
+        <!-- <label for="route">Route:</label>
+        <select id="route" name="route" required>
+            <option value="route1">Route 1</option>
+            <option value="route2">Route 2</option>
+             Add more route options as needed 
+        </select> -->
+        <br><br>
+        <input type="submit" value="Submit">
+    </form>
+</body>
+</html>

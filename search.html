@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Buses</title>
+    <style>
+        .search {
+            text-align: center;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+            font-size: large;
+        }
+
+        .head1 {
+    display: flex;
+    padding: 0px 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+}
+
+.btn {
+    width: 100px; 
+    height: auto;
+}
+    </style>
+</head>
+<body>
+    <div class="head1">
+        <a href="./index.html">
+            <img src="./images/logoside.png" alt="Bus" class="btn">
+        </a>
+    </div>
+    <div class="search">
+        <h1>Search Buses</h1>
+    <form action="search.php" method="GET">
+        <label for="start_location">Start Location:</label>
+        <input type="text" id="start_location" name="start_location" required>
+        
+        <label for="end_location">End Location:</label>
+        <input type="text" id="end_location" name="end_location" required>
+        
+        <input type="submit" value="Search">
+    </form>
+</div>
+</body>
+</html>

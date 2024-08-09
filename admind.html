@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin Dashboard</title>
+    <link rel="stylesheet" href="./styles.css"> <!-- Link to external CSS file -->
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f0f0;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 800px;
+            margin: 50px auto;
+            text-align: center;
+        }
+        .btn {
+    display: flex; /* Use flexbox */
+    justify-content: center; /* Horizontally center the content */
+    align-items: center; /* Vertically center the content */
+    margin: 20px auto; /* Centered horizontally */
+    transition: transform 0.3s ease;
+    color: black;
+}
+
+        .btn:hover {
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Welcome, Admin!</h1>
+        <a href="./Management_form.html" class="btn">
+            <img src="./images/form_image.png" alt="Form Management" width="400">
+            Management form
+        </a>
+        <a href="./dashboard.html" class="btn">
+            <img src="./images/dash.png" alt="Bus Details" width="400">
+            Dashboard
+        </a>
+    </div>
+</body>
+</html>
